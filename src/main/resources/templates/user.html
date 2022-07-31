@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            li {
+                list-style-type: none;
+            }
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                crossorigin="anonymous"></script>
+    </head>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a class="text-white">
+                    <strong th:text="${autorityUser.login}"></strong>
+                    <span>With roles: </span>
+                    <span th:each="role : ${autorityUser.roles}" th:text="${role.roleName} + ' '"></span>
+                </a>
+                <a href="/logout">logout</a>
+            </div>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-1">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                   <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab"
+                   aria-controls="v-pills-user" aria-selected="true">User</a>
+            </div>
+        </div>
+        <div class="col-11">
+                <div class="tab-content" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
+                    <h3>User information page</h3>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Adress</th>
+                            <th scope="col">Login</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td th:text="${autorityUser.id}"></td>
+                            <td th:text="${autorityUser.name}"></td>
+                            <td th:text="${autorityUser.surname}"></td>
+                            <td th:text="${autorityUser.adress}"></td>
+                            <td th:text="${autorityUser.login}"></td>
+                            <td th:text="${autorityUser.password}"></td>
+                            <td>
+                                <span th:each="role : ${autorityUser.roles}" th:text="${role.roleName} + ' '"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</div>
+</html>
